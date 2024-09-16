@@ -14,8 +14,7 @@ class TodoListScreen extends StatelessWidget {
         
         centerTitle: true,
         title: const Text('Todo List',style: TextStyle(color: Colors.white),),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        toolbarHeight: 50,
+
         bottom: const TabBar(
           labelStyle: TextStyle(fontSize: 17),
           indicatorColor: Colors.white,

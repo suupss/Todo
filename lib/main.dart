@@ -22,10 +22,10 @@ theme: ThemeData(
     titleMedium: TextStyle(fontSize: 16, )
   ),
   appBarTheme: AppBarTheme(
-    
     color: Colors.indigo[200],
     toolbarHeight: 60,
     foregroundColor: Colors.white
+    
     
   )
 
