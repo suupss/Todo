@@ -29,9 +29,9 @@ class GetTodos {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['code'] = code;
-    data['success'] = success;
+    data['success'] = this.success;
     data['timestamp'] = timestamp;
     data['message'] = message;
     if (items != null) {

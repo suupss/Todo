@@ -3,15 +3,20 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
 class ApiService {
+
+  //get todos
   Future<GetTodos> fetchData() async{
     try{
 final response = await  http.get(Uri.parse('https://api.nstack.in/v1/todos'));
-debugPrint(response.body);
+print(response.body);
+
 
 if(response.statusCode == 200)
-{
-debugPrint(jsonDecode(response.body).toString());
+{ 
+  
+
   final data = jsonDecode(response.body);
+  
   return GetTodos.fromJson(data);
 }
 else {
@@ -26,4 +31,32 @@ else {
     }
 
   }
+
+  Future<GetTodos> postTodo( String title , String description, bool is_completed) async {
+    try{
+      final response = await http.post(Uri.parse('https://api.nstack.in/v1/todos'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode( {
+  "title": title,
+  "description": description,
+  "is_completed": is_completed,
+})
+      );
+
+      if(response.statusCode == 201)
+      {
+        final data = jsonDecode(response.body);
+        print(data);
+        return GetTodos.fromJson(data);
+      }
+      else{
+        throw 'No value from API';
+      }
+    }
+    catch(e)
+    {
+      throw 'An error occured';
+    }
+  }
+ 
 }
