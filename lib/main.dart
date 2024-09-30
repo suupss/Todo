@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/screens/todo_list_screen.dart';
+import 'package:todo_app/screens/first_screen.dart';
+
 void main()
 {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ theme: ThemeData(
   
 
 ),
-home: const TodoListScreen(),
+home: const FirstScreen(),
     );
   }
 }
