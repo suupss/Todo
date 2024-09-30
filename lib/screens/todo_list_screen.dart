@@ -16,20 +16,20 @@ class _TodoListScreenState extends State<TodoListScreen> {
   List<Items> isCompleted = []; 
   List<Items> isIncomplete = [];
   GetTodos getTodos = GetTodos();
- late Future<GetTodos> fetchData;
+//  late Future<GetTodos> fetchData;
  final ApiService _apiService = ApiService();
  bool isLoading = false;
   
   fetchDataTodo () async
   {
+    getTodos.items?.clear();
+    isCompleted.clear();
+    isIncomplete.clear();
+
     isLoading = true;
+    setState(() {});
 await _apiService.fetchData().then((value)
 {
-
-setState(() {
-  
-});
-
 getTodos = value;
 for(var todo in value.items!)
 {
@@ -43,14 +43,15 @@ isCompleted.add(todo);
   setState(() {});
 }
 isLoading = false;
-
-
-
+setState(() {});
 }
 
 
 ).onError((error, stackTrace) {
-  debugPrint(error.toString());
+  debugPrint(error.toString()
+  
+  );
+
 },);
   }
 
@@ -59,7 +60,7 @@ isLoading = false;
 @override
   void initState() {
     fetchDataTodo();
-   fetchData = _apiService.fetchData();
+  //  fetchData = _apiService.fetchData();
     super.initState();
   }
   
@@ -89,7 +90,7 @@ isLoading = false;
 
         
       ),
-      body: isLoading? Center(child: const CircularProgressIndicator.adaptive())  : TabBarView(children: [
+      body: isLoading? const Center(child:  CircularProgressIndicator.adaptive())  : TabBarView(children: [
         TodoScreens(todoList: getTodos.items ?? [],),
        TodoScreens(todoList: isCompleted,),
        TodoScreens(todoList: isIncomplete,)
@@ -97,10 +98,10 @@ isLoading = false;
       backgroundColor: Theme.of(context).colorScheme.secondary,
 
       floatingActionButton: FloatingActionButton(onPressed: () async{
-       bool loading = await Navigator.push(context, MaterialPageRoute(builder: (context)=> const AddAndUpdateTodo()));
-if(loading == true){
-  fetchDataTodo();
-}
+      await Navigator.push(context, MaterialPageRoute(builder: (context)=> const AddAndUpdateTodo()));
+
+       fetchDataTodo();
+
       }, backgroundColor: Theme.of(context).colorScheme.primary,
       child: const Icon(Icons.add),),
       ),
