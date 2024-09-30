@@ -29,9 +29,9 @@ class GetTodos {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
-    data['success'] = this.success;
+    data['success'] = success;
     data['timestamp'] = timestamp;
     data['message'] = message;
     if (items != null) {
@@ -70,13 +70,13 @@ class Items {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['is_completed'] = this.isCompleted;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['title'] = title;
+    data['description'] = description;
+    data['is_completed'] = isCompleted;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }
@@ -107,13 +107,13 @@ class Meta {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total_items'] = this.totalItems;
-    data['total_pages'] = this.totalPages;
-    data['per_page_item'] = this.perPageItem;
-    data['current_page'] = this.currentPage;
-    data['page_size'] = this.pageSize;
-    data['has_more_page'] = this.hasMorePage;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total_items'] = totalItems;
+    data['total_pages'] = totalPages;
+    data['per_page_item'] = perPageItem;
+    data['current_page'] = currentPage;
+    data['page_size'] = pageSize;
+    data['has_more_page'] = hasMorePage;
     return data;
   }
 }
